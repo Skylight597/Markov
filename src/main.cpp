@@ -2,6 +2,8 @@
 #include <iostream>
 #include <bits/stdc++.h>
 #include <fstream>
+#include <string>
+#include <vector>
 using namespace std;
 
 //Markov model tasks:
@@ -19,3 +21,33 @@ using namespace std;
 // 10. Return the generated text to the user.
 // 11. Write unit tests
 // 12. Handle errors.
+
+vector<char> readFile(string fileName){
+
+    ifstream file (fileName);
+    char character;
+    vector<char> fileData;
+
+    while(file){
+        
+        character = file.get();
+        fileData.push_back(character);
+        
+    }
+    
+    return fileData;
+}
+
+
+
+int main(){
+
+    vector<char> printOut = readFile("textFile.txt");
+
+    for(int i=0; i< printOut.size(); i++){
+
+        cout << printOut[i] << endl;
+
+    }
+
+}

@@ -1,0 +1,1 @@
+Here is some text to read so we can test out how the different C++ libraries handle input.
