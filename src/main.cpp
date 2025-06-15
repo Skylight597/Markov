@@ -21,6 +21,33 @@ using namespace std;
 // 10. Return the generated text to the user.
 // 11. Write unit tests
 // 12. Handle errors.
+vector<char> findNextChar(string key, vector<char> text){
+
+    int len = key.size();
+    int endPos = len - 1;
+    int loops = text.size() - endPos;
+    text.push_back('\0');
+    vector<char> nextLetters;
+    
+    for(int i = 0; i < loops; i++){
+
+        string compString(text.begin() + i, text.begin()+endPos);
+        if(key == compString){
+            
+            char letter = text[len];
+            nextLetters.push_back(letter);
+
+        }
+
+        endPos++;
+        len++;
+
+    }
+
+    return nextLetters;
+
+}
+
 
 vector<char> readFile(string fileName){
 
@@ -29,7 +56,7 @@ vector<char> readFile(string fileName){
     vector<char> fileData;
 
     while(file){
-        
+
         character = file.get();
         fileData.push_back(character);
         
@@ -55,6 +82,7 @@ void mapFile (vector<char> content, int seed){
 
    for(int i=0; i < loopcount; i++){
         string key(content.begin()+i, content.begin()+correctseed);
+        vector<char> value = findNextChar(key, content);
         
    }
     
